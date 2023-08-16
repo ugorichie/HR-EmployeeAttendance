@@ -7,7 +7,7 @@ $att = new Attendance();
 if($_POST){
 
 
-    // 
+    // On.click of the "send" button, the following data is sent to the database via this if($_POST) statement
     if(isset($_POST["attend_button"])){
 
         if(isset($_POST["staffs"])){
@@ -27,12 +27,17 @@ if($_POST){
              exit();
         }
 
-        $attend = $att->setAttendance ($attendance_status, $staff_id, $attendance_date);
+
+        $attend = $att->setAttendance($attend_status, $staffs, $attend_date);
+
+        if($attend){
+            echo "success adding";
+        }
 
     }
 
 
 }else{
-    header("location:../")
+    header("location:../newindex.php");
 }
 ?>

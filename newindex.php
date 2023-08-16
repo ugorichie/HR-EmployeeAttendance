@@ -24,7 +24,7 @@ require_once("class/Staff.php");
     <section class="row">
         <h2>Mark Attendance</h2>
 
-        <form action="mark_attendance.php" method="POST">
+        <form action="process/mark_attendance.php" method="POST">
 
             <label for="staff_id">Select Staff:</label>
 
