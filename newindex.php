@@ -81,7 +81,7 @@ require_once("class/Staff.php");
                 <td><?php echo $staff["staff_email"] ?></td>
                 <td>#<?php echo $staff["staff_salary"] ?></td>
                 <td>@@@@ </td>
-                <td><a href="view_attendance.php?staff_id=1">View Attendance</a></td>
+                <td><a href = "view_attendance.php?staff_id=<?php echo$staff["staff_id"] ?> "> View Attendance </a></td>
             </tr>
         <?php
             }

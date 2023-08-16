@@ -5,6 +5,9 @@ require_once("Db.php");
 class Attendance extends Db{
 
 
+
+
+
     //This method is responsible for adding employer attendance to the database.
     public function setAttendance($attendance_status, $staff_id, $attendance_date){
         $sql = "SELECT * FROM attendance WHERE attendance_date = ?";
@@ -28,9 +31,19 @@ class Attendance extends Db{
     }
 
 
+
+
+
     //This method is responsible for showing the attendance details (whether present or abesent) of the employee
-    public function getAttendance(){
-        
+    public function getAttendance($staff_id){
+            $sql = "SELECT * FROM attendance WHERE staff_id = ?";
+            $stmt = $this->connect()-> prepare($sql);
+            $stmt->execute([$staff_id]);
+            $show = $stmt -> fetch(PDO::FETCH_ASSOC);
+            return $show;
+        }
+    
+
     }
 
 }
