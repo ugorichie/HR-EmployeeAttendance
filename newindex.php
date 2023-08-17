@@ -23,18 +23,18 @@ session_start();
     </div>
 
     <section class="row ">
-        <div class="col text-center my-2"> 
+        <div class="col text-center my-4"> 
                 <h2>Mark Attendance</h2>
 
                 <!-- THIS IS A SESSION (isset) TO CATCH AND DISPLAY AN ERROR OR SUCCESS MESSAGE FOR USER EXPERIENCE , IT IS A BOOTSTRAP CL-->
-
                     <?php
                         if(isset($_SESSION["staffs_success"])){
                     ?>
-                    <div class="alert alert-success alert-dismissible fade show col-11 col-md-7" role="alert">
+                    <div class="col-md-2"></div>
+                    <div class="alert alert-success alert-dismissible fade show col-11 col-md-7 text-center " role="alert" style="margin-left: 24 0;">
                             <?php echo $_SESSION["staffs_success"] ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                    </div>
                         
                     <?php 
                         unset ($_SESSION["staffs_success"]);
@@ -43,7 +43,7 @@ session_start();
 
                 <form action="process/mark_attendance.php" method="POST">
 
-                    <label for="staff_id">Select Staff:</label>
+                    <label for="staff_id" class="my-2">Select Staff:</label>
 
                         <select name="staffs" id="staff_id"> 
                             <!--  this dropdown populates staff options from the database -->
@@ -59,11 +59,11 @@ session_start();
                         </select>
                     <br>
 
-                        <label for="attendance_date">Date:</label>
+                        <label for="attendance_date" class="my-2">Date:</label>
                         <input type="date" name="attend_date" id="attendance_date" required>
                     <br>
 
-                    <label for="attendance_status">Attendance Status:</label>
+                    <label for="attendance_status" class="my-2">Attendance Status:</label>
                         <select name="attend_status" id="attendance_status" required>
                             <option value="#">SELECT STATUS </option>
                             <option value="present">Present</option>
@@ -71,7 +71,7 @@ session_start();
                         </select>
                     <br>
 
-                    <input type="submit" value="Mark Attendance" name="attend_button">
+                    <input type="submit" value="Mark Attendance" name="attend_button" class="btn btn-primary my-2 ">
                 </form>
         </div>
 
@@ -111,7 +111,7 @@ session_start();
 
 
 
-    <script src="bootstrap/js/bootstrap.bundle.js"> </script>
+    <!-- <script src="bootstrap/js/bootstrap.bundle.js"> </script> -->
 
     </script>
 </body>
