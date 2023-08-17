@@ -1,7 +1,10 @@
 <?php
 
 require_once("../class/Attendance.php");
-$att = new Attendance();
+$attendance_instance = new Attendance();
+
+require_once("../class/Salary.php");
+$salary_instance = new Salary();
 
 // If this page wasnt visited throught a post method, this statment below returns the (person) back to the page
 if($_POST){
@@ -28,10 +31,18 @@ if($_POST){
         }
 
 
-        $attend = $att->setAttendance($attend_status, $staffs, $attend_date);
+        $attend = $attendance_instance -> setAttendance($attend_status, $staffs, $attend_date);
 
         if($attend){
             echo "success adding";
+            // $_SESSION["staffs_success"] = "You have successfully marked an attendance.  for date: ".$attend_date;
+            // header("location:../newindex.php");
+            //  exit();
+            
+        }
+
+        if($attend_date == "abesent"){
+           $salary = $salary_instance -> applyDeduction ($attend_date, $staffs, $staff_Salary) ;
         }
 
     }

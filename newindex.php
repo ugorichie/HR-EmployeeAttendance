@@ -48,6 +48,7 @@ require_once("class/Staff.php");
 
             <label for="attendance_status">Attendance Status:</label>
             <select name="attend_status" id="attendance_status" required>
+                <option value="#">SELECT STATUS </option>
                 <option value="present">Present</option>
                 <option value="absent">Absent</option>
             </select>
@@ -66,8 +67,8 @@ require_once("class/Staff.php");
             <th>Name</th>
             <th>Email</th>
             <th>Supposed Monthly Salary</th>
-            <th>Current Salary</th>
-            <th>Actions</th>
+            <th>Current Salary & Attendance Details</th>
+            
         </tr>
         <!-- this table is populated with staff information from the database -->
         <?php
@@ -80,7 +81,7 @@ require_once("class/Staff.php");
                 <td><?php echo $staff["staff_fullname"] ?></td>
                 <td><?php echo $staff["staff_email"] ?></td>
                 <td>#<?php echo $staff["staff_salary"] ?></td>
-                <td>@@@@ </td>
+                
                 <td><a href = "view_attendance.php?staff_id=<?php echo$staff["staff_id"] ?> "> View Attendance </a></td>
             </tr>
         <?php

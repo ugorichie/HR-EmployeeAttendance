@@ -12,13 +12,13 @@ class Attendance extends Db{
     public function setAttendance($attendance_status, $staff_id, $attendance_date){
         $sql = "SELECT * FROM attendance WHERE attendance_date = ?";
         $stmt = $this-> connect() -> prepare($sql);
-        $stmt->execute([$attendance_date]);
+        $stmt -> execute([$attendance_date, $staff_id]);
 
-        // Do a rowcount()on the database, if rowcount is 1, means the date has already been selected before
+        // Do a rowcount()on the database, if rowcount on the date selected is 1, means the date has already been selected before
             $stmt->rowCount();
-            $engrcount = $stmt->rowCount();
+            $attendancecount = $stmt->rowCount();
             
-            if($attendance_date > 0){
+            if(($attendancecount = 1) && ($staff_id )){
                 echo " Sorry, you can not select a date more than once, kindly go back and select right date ";
                 exit();
             }
@@ -44,9 +44,9 @@ class Attendance extends Db{
         }
     
 
+         
     }
 
-}
 
 //INITATIATE AN OBJECT
 
