@@ -19,12 +19,12 @@ class Attendance extends Db{
 
             $attendancecount = $stmt->rowCount();
 
-            if ($attendancecount > 1) {
+            if ($attendancecount = 1) {
                 echo "Sorry, you cannot select a date more than once. Kindly go back and select the right date.";
                 exit();
             }
 
-            
+
         // The Method for setAttendance starts here.
         $sql = "INSERT INTO attendance(attendance_status, staff_id, attendance_date) VALUES (?,?,?)";
         $stmt = $this -> connect() -> prepare($sql);

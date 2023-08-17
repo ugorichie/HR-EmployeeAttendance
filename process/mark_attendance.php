@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("../class/Attendance.php");
 $attendance_instance = new Attendance();
 
@@ -25,19 +25,17 @@ if($_POST){
 
         // THIS STATMENT BELOW EXPLAINS THE FACT THAT IF A DATE IS NOT SELECTED, IT ALERTS THE HR TO SELECT A DATE
         if(!isset($_POST["staffs"])){
-            $_SESSION["staffs_error"] = "Kindly select a date";
-            header("location:../newindex.php");
-             exit();
+             echo "kindly select a date";
         }
 
 
         $attend = $attendance_instance -> setAttendance($attend_status, $staffs, $attend_date);
 
         if($attend){
-            echo "success adding";
-            // $_SESSION["staffs_success"] = "You have successfully marked an attendance.  for date: ".$attend_date;
-            // header("location:../newindex.php");
-            //  exit();
+            // echo "success adding";
+            $_SESSION["staffs_success"] = "You have successfully marked an attendance.  for date: ".$attend_date;
+            header("location:../newindex.php");
+             exit();
 
             if($attend_status == "absent"){
                 $salary = $salary_instance -> applyDeduction ($attend_date, $staffs, $staff_Salary) ;
