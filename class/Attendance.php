@@ -10,19 +10,21 @@ class Attendance extends Db{
 
     //This method is responsible for adding employer attendance to the database.
     public function setAttendance($attendance_status, $staff_id, $attendance_date){
-        $sql = "SELECT * FROM attendance WHERE attendance_date = ?";
-        $stmt = $this-> connect() -> prepare($sql);
-        $stmt -> execute([$attendance_date, $staff_id]);
 
-        // Do a rowcount()on the database, if rowcount on the date selected is 1, means the date has already been selected before
-            $stmt->rowCount();
+             $sql = "SELECT * FROM attendance WHERE attendance_date = ? AND staff_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$attendance_date, $staff_id]);
+
+             // Do a rowcount()on the database, if rowcount on the date selected is 1, means the date has already been selected before
+
             $attendancecount = $stmt->rowCount();
-            
-            if(($attendancecount = 1) && ($staff_id )){
-                echo " Sorry, you can not select a date more than once, kindly go back and select right date ";
+
+            if ($attendancecount > 1) {
+                echo "Sorry, you cannot select a date more than once. Kindly go back and select the right date.";
                 exit();
             }
 
+            
         // The Method for setAttendance starts here.
         $sql = "INSERT INTO attendance(attendance_status, staff_id, attendance_date) VALUES (?,?,?)";
         $stmt = $this -> connect() -> prepare($sql);

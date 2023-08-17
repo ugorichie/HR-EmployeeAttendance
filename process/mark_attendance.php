@@ -38,12 +38,14 @@ if($_POST){
             // $_SESSION["staffs_success"] = "You have successfully marked an attendance.  for date: ".$attend_date;
             // header("location:../newindex.php");
             //  exit();
+
+            if($attend_status == "absent"){
+                $salary = $salary_instance -> applyDeduction ($attend_date, $staffs, $staff_Salary) ;
+             }
             
         }
 
-        if($attend_date == "abesent"){
-           $salary = $salary_instance -> applyDeduction ($attend_date, $staffs, $staff_Salary) ;
-        }
+        
 
     }
 

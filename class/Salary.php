@@ -23,9 +23,9 @@ class Salary extends Db {
 
              $sql = "INSERT INTO salary (staff_id, date) VALUES (?, ?)";
             $stmt = $this-> connect()->prepare($sql);
-           $result = $stmt->execute([$date, $staff_Id]);
+           $result = $stmt->execute([$date, $this -> $staff_Id]);
             return $result;
-            
+
 
             // Calculate new monthly staff salary after deduction
             $newStaff_Salary = $Staff_Salary - $dailyDeduction;
@@ -34,7 +34,7 @@ class Salary extends Db {
             // Update staff's monthly salary in the 'staff' table
             $sql = "UPDATE salary SET staff_salary = ? WHERE id = ?";
             $stmt = $this-> connect() -> prepare($sql);
-           $updatedsalary = $stmt->execute([$staff_Id, $newStaff_Salary]);
+           $updatedsalary = $stmt->execute([$newStaff_Salary]);
             return $updatedsalary;
 
     }
