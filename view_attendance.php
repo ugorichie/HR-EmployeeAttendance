@@ -40,13 +40,13 @@ $att = new Attendance();
         <section class="row">
             <div class="col">
 
-                    <h1 class="text-center">
-                        EMPLOYEE NAME: <?php  echo $staffDetails["staff_fullname"] ;?>
-                    </h1>
+                    <h2 class="text-center">
+                        Staff Fullname: <?php  echo $staffDetails["staff_fullname"] ;?>
+                    </h2>
 
-                    <h3>
-                        EMPLOYEE EMAIL: <?php echo $staffDetails["staff_email"] ;?>
-                    </h3>
+                    <h4 class="text-center text-danger my-4">
+                        EMPLOYEE EMAIL -: <?php echo $staffDetails["staff_email"] ;?>
+                    </h4>
 
             </div>
 
