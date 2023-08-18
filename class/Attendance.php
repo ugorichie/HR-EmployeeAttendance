@@ -24,7 +24,7 @@ class Attendance extends Db{
             $attendancecount = $stmt->rowCount();
 
             if ($attendancecount === 1 ) {
-                echo "SORRY, you cannot select a particular date for a staff more than once, as you have marked attendance for this staff.  Kindly go back and select the right date.";
+                echo "SORRY, you cannot select a particular date for a staff more than once, as you have marked attendance for this staff on this day already.  Kindly go back and select the right date.";
                 exit();
             }
 

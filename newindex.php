@@ -83,7 +83,7 @@ session_start();
     
     <h2 class="text-center py-1">Staff Update Information</h2>
 
-    <table class="table table-hover table-striped table-center">
+    <table class="table table-hover table-striped table-center mx-3">
         <tr>
             <th>S/N</th>
             <th>Name</th>
