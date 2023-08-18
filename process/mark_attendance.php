@@ -27,7 +27,6 @@ if($_POST){
             $attend_status = $_POST["attend_status"];
        }
 
-       $attend_status = $_POST["attend_status"];
 
         // THIS STATMENT BELOW EXPLAINS THE FACT THAT IF A ATTENDANCE STATUS IS NOT SELECTED, IT ALERTS THE HR TO SELECT A STATUS
         if(!isset($_POST["attend_status"])){
@@ -41,11 +40,11 @@ if($_POST){
             // echo "success adding";
             $_SESSION["staffs_success"] = "You have successfully marked an attendance. for date: ".$attend_date." <br>click - 'view attendance' to see salary updates " ;
             header("location:../newindex.php");
-             exit();
 
             if($attend_status === "absent"){
                 $salary = $salary_instance -> applyDeduction ($attend_date, $staffs, $staff_Salary) ;
              }
+
             
         }
 

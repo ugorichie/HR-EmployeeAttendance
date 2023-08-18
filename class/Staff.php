@@ -31,7 +31,7 @@ Class Staff extends Db{
 $check = new Staff();
 $checker = $check -> getStaff();
 
-print_r ($checker);
+// print_r ($checker);
 
 
 ?>

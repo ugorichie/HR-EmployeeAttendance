@@ -31,7 +31,7 @@ session_start();
                         if(isset($_SESSION["staffs_success"])){
                     ?>
                     <div class="col-md-2"></div>
-                    <div class="alert alert-success alert-dismissible fade show col-11 col-md-7 text-center " role="alert" style="margin-left: 250;">
+                    <div class="alert alert-success alert-dismissible fade show col-11 col-md-7 text-center " role="alert" style="margin-left: 250px;">
                             <?php echo $_SESSION["staffs_success"] ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
@@ -106,7 +106,7 @@ session_start();
                 <td><?php echo $staff["staff_email"] ?></td>
                 <td># 10,000</td>
                 <td>#<?php echo $staff["staff_salary"] ?></td>
-                <td># 400</td>
+                <td># 200</td>
 
                 
                 <td><a href = "view_attendance.php?staff_id=<?php echo$staff["staff_id"] ?> "> View Attendance </a></td>

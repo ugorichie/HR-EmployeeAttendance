@@ -31,7 +31,7 @@ class Db{
 
     //INSTANTIALIZATION HAPPENS HERE TO TELL US IF WE ARE HAVE SUUCCESSFULLY CONNECTED TO THE DATABASE.
          $demo = new Db();
-       print_r($demo -> connect());
+    //    print_r($demo -> connect());
    
 
 

@@ -31,7 +31,7 @@ class Attendance extends Db{
 
         // The Method for setAttendance starts here.
         $sql = "INSERT INTO attendance(attendance_status, staff_id, attendance_date) VALUES (?,?,?)";
-        $stmt = $this -> connect() -> prepare($sql);
+        $stmt = $this -> conn -> prepare($sql);
         $result = $stmt-> execute([$attendance_status, $staff_id, $attendance_date]);
         return $result;
     }
@@ -40,7 +40,7 @@ class Attendance extends Db{
 
 
 
-    //This method is responsible for showing the attendance details (whether present or abesent) of the employee
+    //This method is responsible for showing the attendance details (whether present or abesent) of the staff
     public function getAttendance($staff_id){
             $sql = "SELECT * FROM attendance join staff on staff.staff_id = attendance.staff_id  WHERE attendance.staff_id = ?";
             $stmt = $this->conn-> prepare($sql);
@@ -49,6 +49,26 @@ class Attendance extends Db{
             return $show;
         }
     
+
+
+    //This method is in responsible for showing / displaying the number of times the Staff was Absent
+    public function countAbsent($staff_id){
+        $sql = "SELECT * FROM attendance where attendance_status = 'absent' and staff_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$staff_id]);
+        $count = $stmt -> rowCount();
+         return $count;
+    }
+
+    //This method is in responsible for showing / displaying the number of times the Staff was Absent
+    public function countPresent($staff_id){
+        $sql = "SELECT * FROM attendance where attendance_status = 'present' and staff_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$staff_id]);
+        $count = $stmt -> rowCount();
+         return $count;
+    }
+
 
          
     }

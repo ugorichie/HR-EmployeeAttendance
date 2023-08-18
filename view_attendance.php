@@ -6,15 +6,15 @@ require_once("class/Staff.php");
 if(isset($_GET["staff_id"])){
     $staff_id = $_GET["staff_id"];
  
-$att = new Attendance();
- $attend = $att->getAttendance($staff_id);
+$att = new Attendance(); //instantation of class Attendance (creating new object)
+
+$attend = $att->getAttendance($staff_id); 
+$countAbsent = $att->countAbsent($staff_id); 
+$countPresent = $att->countPresent($staff_id);
     
  $showResult = new Staff();
  $staffDetails = $showResult -> showStaff($staff_id);
 }
-// require_once("class/Staff.php");
-
-
 ?>
 
 
@@ -28,27 +28,30 @@ $att = new Attendance();
 </head>
 <body>
 
-        <?php 
-           
-                echo "<pre>";
-                print_r ($attend);
-                echo "</pre>";
-            
-
-        ?>
-
-        <section class="row">
-            <div class="col">
+        <section>
+            <div class="row">
 
                     <h2 class="text-center">
                         Staff Fullname: <?php  echo $staffDetails["staff_fullname"] ;?>
                     </h2>
 
-                    <h4 class="text-center text-danger my-4">
+                    <h4 class="text-center text-info my-2">
                         EMPLOYEE EMAIL -: <?php echo $staffDetails["staff_email"] ;?>
                     </h4>
 
+                    <h5 class="text-muted text-center">
+                        Current Monthly Salary: <?php echo $staffDetails["staff_salary"]   ;?>
+                    </h5>
+
+                        <div class="col-6 text-center my-2">
+                        <span class=" text-danger">Number of Absent days - <?php echo $countAbsent?></span>
+                        </div>
+                        <div class="col-6">  
+                        <span class=" text-success ">Number of Present days - <?php echo $countPresent?></span> 
+                        </div>
+                           
             </div>
+
 
 
         </section>
