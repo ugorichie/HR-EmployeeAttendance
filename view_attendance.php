@@ -83,6 +83,8 @@ $countPresent = $att->countPresent($staff_id);
             </table>
         </section>
 
+        <a href="index.php" class="mx-5"> HOME PAGE </a>
+
     <script src="bootstrap/js/bootstrap.bundle.js"> </script>
 </body>
 </html>
