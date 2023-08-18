@@ -16,6 +16,14 @@ Class Staff extends Db{
 
     }
 
+    public function showStaff($staff_id){
+        $sql = "SELECT * from staff where staff_id = ?";
+        $stmt = $this -> connect() -> prepare($sql);
+        $stmt -> execute([$staff_id]);
+        $showResult = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $showResult;
+    }
+
 
 
 }

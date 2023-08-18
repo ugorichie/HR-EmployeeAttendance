@@ -21,10 +21,13 @@ if($_POST){
 
         $attend_date = $_POST["attend_date"];
 
+        $staff_Salary = $_POST["staff_salary"];
+
         if(isset($_POST["attend_status"])){
             $attend_status = $_POST["attend_status"];
        }
 
+       $attend_status = $_POST["attend_status"];
 
         // THIS STATMENT BELOW EXPLAINS THE FACT THAT IF A ATTENDANCE STATUS IS NOT SELECTED, IT ALERTS THE HR TO SELECT A STATUS
         if(!isset($_POST["attend_status"])){
@@ -36,7 +39,7 @@ if($_POST){
 
         if($attend){
             // echo "success adding";
-            $_SESSION["staffs_success"] = "You have successfully marked an attendance. for date: ".$attend_date." - - : click 'view attendance' to see salary updates " ;
+            $_SESSION["staffs_success"] = "You have successfully marked an attendance. for date: ".$attend_date." <br>click - 'view attendance' to see salary updates " ;
             header("location:../newindex.php");
              exit();
 

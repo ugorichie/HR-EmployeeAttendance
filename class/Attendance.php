@@ -5,14 +5,18 @@ require_once("Db.php");
 class Attendance extends Db{
 
 
+        private $conn;
 
+        public function __construct(){
+            $this->conn = $this->connect();
+        }
 
 
     //This method is responsible for adding employer attendance to the database.
     public function setAttendance($attendance_status, $staff_id, $attendance_date){
 
              $sql = "SELECT * FROM attendance WHERE attendance_date = ? AND staff_id = ?";
-            $stmt = $this->connect()->prepare($sql);
+            $stmt = $this->conn ->prepare($sql);
             $stmt->execute([$attendance_date, $staff_id]);
 
              // Do a rowcount()on the database, if rowcount on the date selected is 1, means the date has already been selected before
@@ -20,7 +24,7 @@ class Attendance extends Db{
             $attendancecount = $stmt->rowCount();
 
             if ($attendancecount === 1 ) {
-                echo "Sorry, you cannot select a date more than once. Kindly go back and select the right date.";
+                echo "SORRY, you cannot select a particular date for a staff more than once, as you have marked attendance for this staff.  Kindly go back and select the right date.";
                 exit();
             }
 
@@ -38,10 +42,10 @@ class Attendance extends Db{
 
     //This method is responsible for showing the attendance details (whether present or abesent) of the employee
     public function getAttendance($staff_id){
-            $sql = "SELECT * FROM attendance WHERE staff_id = ?";
-            $stmt = $this->connect()-> prepare($sql);
+            $sql = "SELECT * FROM attendance join staff on staff.staff_id = attendance.staff_id  WHERE attendance.staff_id = ?";
+            $stmt = $this->conn-> prepare($sql);
             $stmt->execute([$staff_id]);
-            $show = $stmt -> fetch(PDO::FETCH_ASSOC);
+            $show = $stmt -> fetchAll(PDO::FETCH_ASSOC);
             return $show;
         }
     
